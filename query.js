@@ -3,6 +3,10 @@ const Web3 = require('web3');
 
 require('dotenv').config();
 
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const main = async () => {
   // Create connection to DataHub Celo Network node
   const web3 = new Web3(process.env.REST_URL);
@@ -21,7 +25,7 @@ const main = async () => {
   console.log('Pending balance: ', accountBalances.pending.toString(10));
 
   console.log('Wait...')
-  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+  await timeout(Math.random() * 10 + Math.random() * 180000)
 
 
   // 2. Query node info
@@ -30,7 +34,7 @@ const main = async () => {
   console.log('Node Info: ', nodeInfo);
 
   console.log('Wait...')
-  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+  await timeout(Math.random() * 10 + Math.random() * 180000)
 
 
   // 3.1 Query latest block
@@ -39,7 +43,7 @@ const main = async () => {
   console.log('Latest block: ', blocksLatest);
 
   console.log('Wait...')
-  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+  await timeout(Math.random() * 10 + Math.random() * 180000)
 
 
   // 3.2 Block by number, defaults to latest, lets get block 3263105
@@ -48,7 +52,7 @@ const main = async () => {
   console.log('Block: ', block);
 
   console.log('Wait...')
-  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+  await timeout(Math.random() * 10 + Math.random() * 180000)
 
 
   const txCount = await web3.eth.getTransactionCount(process.env.ADDRESS)
@@ -56,7 +60,7 @@ const main = async () => {
   console.log('Tx count: ', txCount);
 
   console.log('Wait...')
-  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+  await timeout(Math.random() * 10 + Math.random() * 180000)
 
 
   const estimateGas = await web3.eth.estimateGas({

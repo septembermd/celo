@@ -4,6 +4,10 @@ const MetaCoin = require('./build/contracts/MetaCoin.json');
 
 require('dotenv').config();
 
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const main = async () => {
   // Create connection to DataHub Celo Network node
   const web3 = new Web3(process.env.REST_URL);
@@ -31,7 +35,7 @@ const main = async () => {
   let balanceBefore = await instance.methods.getBalance(account.address).call();
   console.log('Balance before:', balanceBefore);
   console.log('Wait...')
-  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+  await timeout(Math.random() * 10 + Math.random() * 180000)
 
   // Send tokens
   const recipientAddress = '0xD86518b29BB52a5DAC5991eACf09481CE4B0710d';
@@ -44,7 +48,7 @@ const main = async () => {
   console.log('Sent coin smart contract call receipt: ', receipt);
 
   console.log('Wait...')
-  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+  await timeout(Math.random() * 10 + Math.random() * 180000)
 
   // Get balance again
   let balanceAfter = await instance.methods.getBalance(account.address).call();
