@@ -20,24 +20,44 @@ const main = async () => {
   console.log('Locked CELO balance: ', accountBalances.lockedCELO.toString(10));
   console.log('Pending balance: ', accountBalances.pending.toString(10));
 
+  console.log('Wait...')
+  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+
+
   // 2. Query node info
   const nodeInfo = await web3.eth.getNodeInfo()
     .catch((err) => { throw new Error(`Could not fetch node info: ${err}`); });
   console.log('Node Info: ', nodeInfo);
+
+  console.log('Wait...')
+  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+
 
   // 3.1 Query latest block
   const blocksLatest = await web3.eth.getBlock("latest")
     .catch((err) => { throw new Error(`Could not fetch latest block: ${err}`); });
   console.log('Latest block: ', blocksLatest);
 
+  console.log('Wait...')
+  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+
+
   // 3.2 Block by number, defaults to latest, lets get block 3263105
   const block = await web3.eth.getBlock(3263105)
     .catch((err) => { throw new Error(`Could not fetch block: ${err}`); });
   console.log('Block: ', block);
 
+  console.log('Wait...')
+  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+
+
   const txCount = await web3.eth.getTransactionCount(process.env.ADDRESS)
       .catch((err) => { throw new Error(`Could not fetch tx count: ${err}`); });
   console.log('Tx count: ', txCount);
+
+  console.log('Wait...')
+  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
+
 
   const estimateGas = await web3.eth.estimateGas({
       to: "0x11f4d0A3c12e86B4b5F39B213F7E19D048276DAe",

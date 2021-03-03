@@ -30,6 +30,8 @@ const main = async () => {
   // Get balance
   let balanceBefore = await instance.methods.getBalance(account.address).call();
   console.log('Balance before:', balanceBefore);
+  console.log('Wait...')
+  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
 
   // Send tokens
   const recipientAddress = '0xD86518b29BB52a5DAC5991eACf09481CE4B0710d';
@@ -40,6 +42,9 @@ const main = async () => {
 
   let receipt = await tx.waitReceipt();
   console.log('Sent coin smart contract call receipt: ', receipt);
+
+  console.log('Wait...')
+  await setTimeout(() => {}, Math.random() * 10 + Math.random() * 180000)
 
   // Get balance again
   let balanceAfter = await instance.methods.getBalance(account.address).call();
